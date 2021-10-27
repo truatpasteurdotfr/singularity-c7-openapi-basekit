@@ -8,7 +8,6 @@ yum -y update && yum -y upgrade && \
 	 date +"%Y-%m-%d-%H%M" > /last_update
 
 cat <<EOF > /etc/yum.repos.d/oneAPI.repo
-tee > /tmp/oneAPI.repo << EOF
 [oneAPI]
 name=Intel® oneAPI repository
 baseurl=https://yum.repos.intel.com/oneapi

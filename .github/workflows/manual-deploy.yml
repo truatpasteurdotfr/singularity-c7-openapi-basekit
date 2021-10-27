@@ -15,7 +15,8 @@ jobs:
   build-test-containers:
     runs-on: ubuntu-latest
     container:
-      image: quay.io/singularity/singularity:v3.8.3
+      image: ghcr.io/truatpasteurdotfr/docker-c7-singularity-builder:main
+      options: --privileged
     strategy:
       fail-fast: false
       matrix:
@@ -41,7 +42,7 @@ jobs:
         run: |
          ls 
          if [ -f "${{ matrix.recipe }}" ]; then
-            sudo -E singularity build container.sif ${{ matrix.recipe }}
+            singularity build container.sif ${{ matrix.recipe }}
             tag=$(echo "${recipe/Singularity\./}")
             if [ "$tag" == "Singularity" ]; then
                 tag=latest
